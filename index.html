@@ -4,13 +4,18 @@
 <title>Hoard</title>
 </head>
 <body>
-<script type="text/x-handlebars">
-    {{#view Hoard.ResourceView}}
+<div id="hoard"></div>
+<script type="text/template" id="application-template">
     <h1>Hello world!</h1>
-    {{/view}}
 </script>
 <script src="vendor/jquery-1.7.1.min.js"></script>
-<script src="vendor/ember-0.9.min.js"></script>
+<script src="vendor/underscore-min.js"></script>
+<script src="vendor/backbone-min.js"></script>
 <script src="lib/app.js"></script>
+<script>
+$(function(){
+   Hoard.app.workspace = new Hoard.controllers.Workspace(); 
+});
+</script>
 </body>
 </html>
