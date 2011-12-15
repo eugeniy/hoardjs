@@ -10,31 +10,47 @@
         <div id="nav"></div>
     </div>
     <div id="main" class="container-fluid">
-        <div id="sidebar" class="sidebar">
-            <div class="filter"></div>
-            <div class="calendar"></div>
-            <div class="labels">
-                <p><input type="checkbox"> <span class="label success">Own</span></p> 
-                <p><input type="checkbox"> <span class="label">Past</span></p> 
-                <p><input type="checkbox" checked="checked"> <span class="label important">Unavailable</span></p> 
-                <p><input type="checkbox" checked="checked"> <span class="label notice">Other</span></p> 
-                <p><input type="checkbox"> <span class="label warning">Pending</span></p> 
-            </div>
-        </div>
         <div id="content" class="content">
             <div class="filter row">
-                <div class="date span4"><strong>November 2, 2012</strong></div>
+                <div class="date span8">
+                    <a href="#" class="btn small">Today</a>
+                    <strong>November 2, 2012</strong>
+                </div>
                 <div class="buttons span6">
                     <a href="#" class="btn small">Print</a>
                     <a href="#" class="btn small">Month</a>
+                    <a href="#" class="btn small">Week</a>
                     <a href="#" class="btn small">Day</a>
                 </div>
             </div>
-            <div id="reservations row"></div>
+            <!--
+            <div class="legend row">
+                <input type="checkbox"> <span class="label success">Own</span>
+                <input type="checkbox"> <span class="label">Past</span>
+                <input type="checkbox" checked="checked"> <span class="label important">Unavailable</span>
+                <input type="checkbox" checked="checked"> <span class="label notice">Other</span>
+                <input type="checkbox"> <span class="label warning">Pending</span>
+            </div>
+            -->
+            <div id="reservations row">
+                <table class="bordered-table zebra-striped">
+                    <tr><th>8am</th><th>9am</th><th>10am</th><th>11am</th>
+                        <th>12pm</th><th>1pm</th><th>2pm</th><th>3pm</th>
+                        <th>4pm</th><th>5pm</th></tr>
+                    <tr><td>1</td><td id="start-here"></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
+            </div>
         </div>
     </div>
     <div id="footer"></div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="vendor/less-1.1.5.min.js"></script>
+    <script>
+        $(function(){
+            $('#start-here').append('<div id="long-reservation">Kilgore Trout</div>');
+        });
+    </script>
 </body>
 </html>
