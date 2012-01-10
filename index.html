@@ -2,22 +2,29 @@
 <html>
 <head>
 <title>Hoard</title>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
 </head>
 <body>
-<div id="hoard">
-</div>
+
+<div id="hoard"></div>
 
 <script type="text/template" id="application-template">
-    <h1>_</h1>
+<form id="reservation-form">
+    start:<input id="start_at"><br>
+    end:<input id="end_at"><br>
+    <input type="submit" class="btn">
+</form>
 </script>
 
 <script type="text/template" id="reservation-template">
-    f00bar
+    <%= start_at %><br>
+    <%= end_at %>
 </script>
 
 <script src="vendor/jquery-1.7.1.min.js"></script>
 <script src="vendor/underscore-min.js"></script>
 <script src="vendor/backbone-min.js"></script>
+<script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"></script>
 <script src="lib/hoard.js"></script>
 <script>
 $(function() {
