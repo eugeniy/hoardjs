@@ -31,4 +31,15 @@ $(function() {
         ok( ! reservation.intersects(1000, 1000));
     });
 
+    test('validate()', function() {
+        Hoard.reservations.add({ start_at: 100, end_at: 200 });
+        var res = new Hoard.models.Reservation;
+
+        equal(res.validate({ start_at: 10, end_at: 20 }), undefined);
+        notEqual(res.validate({ start_at: 20, end_at: 10 }), undefined);
+        notEqual(res.validate({ start_at: 10 }), undefined);
+        notEqual(res.validate({ start_at: 150, end_at: 180 }), undefined);
+
+    });
+
 });
