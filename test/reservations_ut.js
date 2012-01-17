@@ -39,7 +39,24 @@ $(function() {
         notEqual(res.validate({ start_at: 20, end_at: 10 }), undefined);
         notEqual(res.validate({ start_at: 10 }), undefined);
         notEqual(res.validate({ start_at: 150, end_at: 180 }), undefined);
-
     });
 
+    test('conflict()', function() {
+        Hoard.reservations.add({ start_at: 100, end_at: 200 });
+        var expected = Hoard.reservations.first();
+        var res = new Hoard.models.Reservation;
+
+        equal(res.conflict(10, 20), undefined);
+        equal(res.conflict(120, 210), expected);
+    });
+
+    test('available()', function() {
+        Hoard.reservations.add({ start_at: 100, end_at: 200 });
+
+        var res = new Hoard.models.Reservation({ start_at: 10, end_at: 20 });
+        equal(res.available(), true);
+
+        var res = new Hoard.models.Reservation({start_at: 10, end_at: 210});
+        equal(res.available(), false);
+    });
 });
