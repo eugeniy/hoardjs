@@ -39,6 +39,10 @@ $(function() {
         notEqual(res.validate({ start_at: 20, end_at: 10 }), undefined);
         notEqual(res.validate({ start_at: 10 }), undefined);
         notEqual(res.validate({ start_at: 150, end_at: 180 }), undefined);
+        notEqual(res.validate({ start_at: 10, end_at: '' }), undefined);
+        notEqual(res.validate({ start_at: '', end_at: 20 }), undefined);
+        notEqual(res.validate({ start_at: '', end_at: 20 }), undefined);
+        notEqual(res.validate({ start_at: '10', end_at: '20' }), undefined);
     });
 
     test('conflict()', function() {
