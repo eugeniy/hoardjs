@@ -16,6 +16,7 @@
         <form>
             start:<input name="start_at"><br>
             end:<input name="end_at"><br>
+            resource:<select name="resource"></select>
             <input type="submit" class="btn">
         </form>
         <ul></ul>
@@ -32,9 +33,14 @@
 </div>
 </script>
 
+<script type="text/template" id="resource-options-template">
+    <% _.each(resources, function(resource) { %>
+        <option><%= resource.name %></option>
+    <% }); %>
+</script>
 <script type="text/template" id="reservation-template">
-    <%= start_at %><br>
-    <%= end_at %>
+    <%= resource %><br>
+    <%= start_at %> to <%= end_at %>
 </script>
 <script type="text/template" id="resource-template">
     <%= name %>
