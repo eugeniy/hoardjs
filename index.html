@@ -9,35 +9,33 @@
 <div id="hoard"></div>
 
 <script type="text/template" id="application-template">
-<div class="container">
-<div class="row">
-    <div class="span8 reservations">
-        <h2>Reservations</h2>
-        <form>
-            start:<input name="start_at"><br>
-            end:<input name="end_at"><br>
-            resource:<select name="resource"></select>
-            <input type="submit" class="btn">
-        </form>
-        <ul></ul>
-    </div>
-    <div class="span8 resources">
-        <h2>Resources</h2>
-        <form>
-            name:<input name="name"><br>
-            <input type="submit" class="btn">
-        </form>
-        <ul></ul>
-    </div>
-</div>
-</div>
+<div class="container"><div class="row"></div></div>
 </script>
 
-<script type="text/template" id="resource-options-template">
-    <% _.each(resources, function(resource) { %>
-        <option><%= resource.name %></option>
-    <% }); %>
+<script type="text/template" id="reservation-list-template">
+    <h2>Reservations</h2>
+    <form>
+        start:<input name="start_at"><br>
+        end:<input name="end_at"><br>
+        resource:<select name="resource">
+        <% _.each(resources, function(resource) { %>
+            <option><%= resource.name %></option>
+        <% }); %>
+        </select>
+        <input type="submit" class="btn">
+    </form>
+    <ul></ul>
 </script>
+
+<script type="text/template" id="resource-list-template">
+    <h2>Resources</h2>
+    <form>
+        name:<input name="name"><br>
+        <input type="submit" class="btn">
+    </form>
+    <ul></ul>
+</script>
+
 <script type="text/template" id="reservation-template">
     <%= resource %><br>
     <%= start_at %> to <%= end_at %>
