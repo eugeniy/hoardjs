@@ -6,6 +6,49 @@
 </head>
 <body>
 
+
+<div id="proto">
+    <table class="reservations">
+        <tr class="reservation">
+            <td class="name">Panda Blade</td>
+            <td class="date">Jan 19, 2012 to Jan 29, 2013</td>
+            <td class="change"><button class="btn small">Change</button></td>
+            <td class="discard"><button class="btn small danger">Discard</button></td>
+        </tr>
+        <tr class="reservation">
+            <td class="name">Trout Box</td>
+            <td class="date">Sep 9, 2011 to Jan 20, 2012</td>
+            <td class="change"><button class="btn small">Change</button></td>
+            <td class="discard"><button class="btn small danger">Discard</button></td>
+        </tr>
+    </table>
+
+    <table class="resources zebra-striped">
+        <tr class="header">
+            <th class="select"></td>
+            <th class="status"></td>
+            <th class="name">Resource</td>
+            <th class="description"></td>
+            <th class="address">Address</td>
+        </tr>
+        <tr class="resource">
+            <td class="select"><input type="checkbox"></td>
+            <td class="status"><span class="label success">OK</span></td>
+            <td class="name"><a href="">Panda Blade</a></td>
+            <td class="description">Pentium II with a hypervisor, 20 slots.</td>
+            <td class="address">172.27.67.63</td>
+        </tr>
+        <tr class="resource">
+            <td class="select"><input type="checkbox"></td>
+            <td class="status"><span class="label important">DOWN</span></td>
+            <td class="name"><a href="">Trout Box</a></td>
+            <td class="description">A dual 2TB drives, 10GB network.</td>
+            <td class="address">172.27.67.72</td>
+        </tr>
+    </table>
+</div>
+
+
 <div id="hoard"></div>
 
 <script type="text/template" id="application-template">
