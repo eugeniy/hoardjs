@@ -22,30 +22,6 @@
             <td class="discard"><button class="btn small danger">Discard</button></td>
         </tr>
     </table>
-
-    <table class="resources zebra-striped">
-        <tr class="header">
-            <th class="select"></td>
-            <th class="status"></td>
-            <th class="name">Resource</td>
-            <th class="description"></td>
-            <th class="address">Address</td>
-        </tr>
-        <tr class="resource">
-            <td class="select"><input type="checkbox"></td>
-            <td class="status"><span class="label success">OK</span></td>
-            <td class="name"><a href="">Panda Blade</a></td>
-            <td class="description">Pentium II with a hypervisor, 20 slots.</td>
-            <td class="address">172.27.67.63</td>
-        </tr>
-        <tr class="resource">
-            <td class="select"><input type="checkbox"></td>
-            <td class="status"><span class="label important">DOWN</span></td>
-            <td class="name"><a href="">Trout Box</a></td>
-            <td class="description">A dual 2TB drives, 10GB network.</td>
-            <td class="address">172.27.67.72</td>
-        </tr>
-    </table>
 </div>
 
 
@@ -71,20 +47,34 @@
 </script>
 
 <script type="text/template" id="resource-list-template">
-    <h2>Resources</h2>
-    <form>
-        name:<input name="name"><br>
-        <input type="submit" class="btn">
-    </form>
-    <ul></ul>
+    <tr class="header">
+        <th class="select"></td>
+        <th class="status"></td>
+        <th class="name">Resource</td>
+        <th class="description"></td>
+        <th class="address">Address</td>
+    </tr>
+</script>
+
+<script type="text/template" id="resource-form-template">
+<h2>Resources</h2>
+<form id="resource-form">
+    name:<input name="name"><br>
+    <input type="submit" class="btn">
+</form>
 </script>
 
 <script type="text/template" id="reservation-template">
     <%= resource %><br>
     <%= start_at %> to <%= end_at %>
 </script>
+
 <script type="text/template" id="resource-template">
-    <%= name %>
+    <td class="select"><input type="checkbox"></td>
+    <td class="status"><span class="label success">OK</span></td>
+    <td class="name"><%= name %></td>
+    <td class="description"></td>
+    <td class="address"></td>
 </script>
 
 <script src="vendor/jquery-1.7.1.min.js"></script>
