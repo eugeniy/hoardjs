@@ -6,32 +6,13 @@
 </head>
 <body>
 
-
-<div id="proto">
-    <table class="reservations">
-        <tr class="reservation">
-            <td class="name">Panda Blade</td>
-            <td class="date">Jan 19, 2012 to Jan 29, 2013</td>
-            <td class="change"><button class="btn small">Change</button></td>
-            <td class="discard"><button class="btn small danger">Discard</button></td>
-        </tr>
-        <tr class="reservation">
-            <td class="name">Trout Box</td>
-            <td class="date">Sep 9, 2011 to Jan 20, 2012</td>
-            <td class="change"><button class="btn small">Change</button></td>
-            <td class="discard"><button class="btn small danger">Discard</button></td>
-        </tr>
-    </table>
-</div>
-
-
 <div id="hoard"></div>
 
 <script type="text/template" id="application-template">
 <div class="container"><div class="row"></div></div>
 </script>
 
-<script type="text/template" id="reservation-list-template">
+<script type="text/template" id="reservation-form-template">
     <h2>Reservations</h2>
     <form>
         start:<input name="start_at"><br>
@@ -43,7 +24,6 @@
         </select>
         <input type="submit" class="btn">
     </form>
-    <ul></ul>
 </script>
 
 <script type="text/template" id="resource-list-template">
@@ -57,16 +37,18 @@
 </script>
 
 <script type="text/template" id="resource-form-template">
-<h2>Resources</h2>
-<form id="resource-form">
-    name:<input name="name"><br>
-    <input type="submit" class="btn">
-</form>
+    <h2>Resources</h2>
+    <form>
+        name:<input name="name"><br>
+        <input type="submit" class="btn">
+    </form>
 </script>
 
 <script type="text/template" id="reservation-template">
-    <%= resource %><br>
-    <%= start_at %> to <%= end_at %>
+    <td class="name"><%= resource %></td>
+    <td class="date"><%= start_at %> to <%= end_at %></td>
+    <td class="change"><button class="btn small">Change</button></td>
+    <td class="discard"><button class="btn small danger">Discard</button></td>
 </script>
 
 <script type="text/template" id="resource-template">
