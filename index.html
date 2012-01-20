@@ -9,21 +9,45 @@
 <div id="hoard"></div>
 
 <script type="text/template" id="application-template">
-<div class="container"><div class="row"></div></div>
+    <div class="container">
+        <div class="row"></div>
+        <div id="reservation-form"></div>
+    </div>
 </script>
 
 <script type="text/template" id="reservation-form-template">
-    <h2>Reservations</h2>
-    <form>
-        start:<input name="start_at"><br>
-        end:<input name="end_at"><br>
-        resource:<select name="resource">
-        <% _.each(resources, function(resource) { %>
-            <option><%= resource.name %></option>
-        <% }); %>
-        </select>
-        <input type="submit" class="btn">
-    </form>
+    <div class="modal-header">
+        <a href="#" class="close">×</a>
+        <h3>New Reservation</h3>
+    </div>
+    <div class="modal-body">
+        <div class="clearfix">
+            <label>Date range</label>
+            <div class="input">
+                <div class="inline-inputs">
+                    <input class="small">
+                    <input name="start_at" class="mini">
+                    to
+                    <input name="end_at" class="mini">
+                    <input class="small">
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <label>Resource</label>
+            <div class="input">
+                <select name="resource">
+                <% _.each(resources, function(resource) { %>
+                    <option><%= resource.name %></option>
+                <% }); %>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Reserve" class="btn primary">
+        <button class="btn discard">Discard</button>
+    </div>
 </script>
 
 <script type="text/template" id="resource-list-template">
@@ -37,9 +61,9 @@
 </script>
 
 <script type="text/template" id="resource-form-template">
-    <h2>Resources</h2>
     <form>
-        name:<input name="name"><br>
+        <h3>Resources</h3>
+        name:<input name="name">
         <input type="submit" class="btn">
     </form>
 </script>
