@@ -18,7 +18,7 @@
 <script type="text/template" id="reservation-form-template">
     <div class="modal-header">
         <a href="#" class="close">×</a>
-        <h3>New Reservation</h3>
+        <h3><%= resource.name %></h3>
     </div>
     <div class="modal-body">
         <div class="clearfix">
@@ -33,18 +33,9 @@
                 </div>
             </div>
         </div>
-        <div class="clearfix">
-            <label>Resource</label>
-            <div class="input">
-                <select name="resource">
-                <% _.each(resources, function(resource) { %>
-                    <option><%= resource.name %></option>
-                <% }); %>
-                </select>
-            </div>
-        </div>
     </div>
     <div class="modal-footer">
+        <input type="hidden" name="resource" value="<%= resource.name %>">
         <input type="submit" value="Reserve" class="btn primary">
         <button class="btn discard">Discard</button>
     </div>
