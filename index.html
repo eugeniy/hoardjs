@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Hoard</title>
-<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+<link rel="stylesheet" href="vendor/bootstrap.min.css">
 </head>
 <body>
 
@@ -10,9 +10,14 @@
 
 <script type="text/template" id="application-template">
     <div class="container">
-        <div class="row"></div>
-        <div id="reservation-form"></div>
+        <div class="content">
+            <div class="row">
+                <div id="reservations" class="span8"></div>
+                <div id="resources" class="span8"></div>
+            </div>
+        </div>
     </div>
+    <div id="reservation-form"></div>
 </script>
 
 <script type="text/template" id="reservation-form-template">
@@ -77,7 +82,7 @@
 <script src="vendor/jquery-1.7.1.min.js"></script>
 <script src="vendor/underscore-min.js"></script>
 <script src="vendor/backbone-min.js"></script>
-<script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"></script>
+<script src="vendor/bootstrap-modal.js"></script>
 <script src="lib/hoard.js"></script>
 <script>
 $(function() {
