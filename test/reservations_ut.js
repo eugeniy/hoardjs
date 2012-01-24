@@ -2,6 +2,12 @@ $(function() {
 
     module('Reservation');
 
+    test('parse_date()', function() {
+        var res = new Hoard.models.Reservation;
+        var expected = new Date(1986, 0, 19, 13, 45).getTime()/1000;
+        equal(res.parse_date('1/19/1986 1:45pm'), expected);
+    });
+
     test('contains()', function() {
         var reservation = new Hoard.models.Reservation;
         reservation.set({start_at: 1000, end_at: 2000});
