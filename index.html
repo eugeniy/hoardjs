@@ -18,6 +18,7 @@
         </div>
     </div>
     <div id="reservation-form"></div>
+    <div id="resource-form"></div>
 </script>
 
 <script type="text/template" id="reservation-form-template">
@@ -48,7 +49,7 @@
 
 <script type="text/template" id="resource-list-template">
     <tr class="header">
-        <th class="select"></td>
+        <th class="select"><button class="create-resource btn">Create</button></td>
         <th class="status"></td>
         <th class="name">Resource</td>
         <th class="description"></td>
@@ -57,11 +58,20 @@
 </script>
 
 <script type="text/template" id="resource-form-template">
-    <form>
-        <h3>Resources</h3>
-        name:<input name="name">
-        <input type="submit" class="btn">
-    </form>
+    <div class="modal-header">
+        <a href="#" class="close">×</a>
+        <h3>New Resource</h3>
+    </div>
+    <div class="modal-body">
+        <div class="clearfix">
+            <label>Name</label>
+            <div class="input"><input name="name"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Create" class="btn primary">
+        <button class="btn discard">Discard</button>
+    </div>
 </script>
 
 <script type="text/template" id="reservation-template">
