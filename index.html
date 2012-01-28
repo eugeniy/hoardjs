@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Hoard</title>
-<link rel="stylesheet" href="vendor/bootstrap.min.css">
+<link rel="stylesheet" href="vendor/bootstrap.css">
 </head>
 <body>
 
@@ -98,6 +98,10 @@
 $(function() {
     var hoard = new Hoard.views.Application;
     $('#hoard').append(hoard.render().el);
+
+    Hoard.resources.reset([{id:1,name:'Panda Blade'},{id:2,name:'Trout Source'},
+                           {id:3,name:'Ice Nine'}]);
+    Hoard.reservations.reset([{start_at:1,end_at:2,resource:3}]);
 });
 </script>
 </body>
