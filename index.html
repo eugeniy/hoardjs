@@ -98,10 +98,8 @@
 $(function() {
     var hoard = new Hoard.views.Application;
     $('#hoard').append(hoard.render().el);
-
-    Hoard.resources.reset([{id:1,name:'Panda Blade'},{id:2,name:'Trout Source'},
-                           {id:3,name:'Ice Nine'}]);
-    Hoard.reservations.reset([{start_at:1,end_at:2,resource:3}]);
+    Hoard.resources.fetch();
+    Hoard.reservations.fetch();
 });
 </script>
 </body>
