@@ -24,7 +24,27 @@
 <script src="vendor/less-1.2.1.min.js"></script>
 <script src="lib/calendar.js"></script>
 <script>
+
+var intervalLengthInPixels = function(width, segment_count) {
+    return width / segment_count;
+};
+var reservationDurationInSeconds = function(start_at, end_at) {
+    return (end_at - start_at) / 1000;
+};
+var reservationWidth = function(start_at, end_at, el, interval) {
+    if (typeof(interval) === 'undefined')
+        var interval = 1800;
+    var width = el.width();
+    var segment_count = reservationDurationInSeconds(start_at, end_at) / interval;
+    var cell_width = intervalLengthInPixels(width, segment_count);
+    el.find('td').width(cell_width);
+    return segment_count * cell_width;
+};
 $(function() {
+    var start_at = new Date(2011, 2, 5, 8);
+    var end_at = new Date(2011, 2, 5, 9);
+    var reservation_width = reservationWidth(start_at, end_at, $('table.calendar'), 3600);
+    $('#bogus-reservation').width(reservation_width);
 });
 </script>
 </body>
