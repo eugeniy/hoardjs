@@ -12,41 +12,15 @@
     <div class="container">
         <div class="content">
             <div class="row">
-                <div id="reservations" class="span8"></div>
-                <div id="resources" class="span8"></div>
+                <div id="reservations" class="span12"></div>
+            </div>
+            <div class="row">
+                <div id="resources" class="span12"></div>
             </div>
         </div>
     </div>
     <div id="reservation-form"></div>
     <div id="resource-form"></div>
-</script>
-
-<script type="text/template" id="reservation-form-template">
-<form>
-    <div class="modal-header">
-        <a href="#" class="close">×</a>
-        <h3><%= resource.name %></h3>
-    </div>
-    <div class="modal-body">
-        <div class="clearfix">
-            <label>Date range</label>
-            <div class="input">
-            <div class="inline-inputs">
-                <input class="small">
-                <input name="start_at" class="mini">
-                to
-                <input name="end_at" class="mini">
-                <input class="small">
-            </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <input type="hidden" name="resource" value="<%= resource.name %>">
-        <input type="submit" value="Reserve" class="btn primary">
-        <button class="btn discard">Discard</button>
-    </div>
-</form>
 </script>
 
 <script type="text/template" id="resources-template">
@@ -63,9 +37,9 @@
 </script>
 
 <script type="text/template" id="resource-template">
-    <td class="status"><span class="label">OK</span></td>
+    <td class="status"><span class="label label-success">OK</span></td>
     <td class="name"><%= name %></td>
-    <td class="description"></td>
+    <td class="description"><%= typeof(description) !== 'undefined' ? description : '' %></td>
     <td class="address"></td>
 </script>
 
@@ -78,8 +52,32 @@
 <script type="text/template" id="reservation-template">
     <td class="name"><%= resource %></td>
     <td class="date"><%= start_at %> to <%= end_at %></td>
-    <td class="change"><button class="btn small">Change</button></td>
-    <td class="discard"><button class="btn small danger">Discard</button></td>
+    <td class="actions">
+        <div class="btn-group">
+            <button class="btn btn-small">Change</button>
+            <button class="btn btn-danger btn-small">
+                <i class="icon-trash icon-white"></i>
+                Delete</button>
+        </div>
+    </td>
+</script>
+
+<script type="text/template" id="reservation-form-template">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3><%= resource.name %></h3>
+    </div>
+    <div class="modal-body">
+        <label>Date range</label>
+        <input class="span2"> <input name="start_at" class="span1">
+            to
+        <input name="end_at" class="span1"> <input class="span2">
+    </div>
+    <div class="modal-footer">
+        <input type="hidden" name="resource" value="<%= resource.name %>">
+        <input type="submit" value="Reserve" class="btn btn-primary">
+        <button class="btn" data-dismiss="modal">Discard</button>
+    </div>
 </script>
 
 
