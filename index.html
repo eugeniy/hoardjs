@@ -51,7 +51,7 @@
 
 <script type="text/template" id="reservation-template">
     <td class="name"><%= resource %></td>
-    <td class="date"><%= start_at %> to <%= end_at %></td>
+    <td class="date"><%= start_at.toFormat('MM/DD/YYYY HH24:MI') %> to <%= end_at.toFormat('MM/DD/YYYY HH24:MI') %></td>
     <td class="actions">
         <div class="btn-group">
             <button class="btn btn-small">Change</button>
@@ -69,9 +69,11 @@
     </div>
     <div class="modal-body">
         <label>Date range</label>
-        <input class="span2"> <input name="start_at" class="span1">
+        <input name="start_at_date" value="<%= reservation.get('start_at').toFormat('MM/DD/YYYY') %>" class="span2">
+        <input name="start_at_time" value="<%= reservation.get('start_at').toFormat('HH24:MI') %>" class="span1">
             to
-        <input name="end_at" class="span1"> <input class="span2">
+        <input name="end_at_time" value="<%= reservation.get('end_at').toFormat('HH24:MI') %>" class="span1">
+        <input name="end_at_date" value="<%= reservation.get('end_at').toFormat('MM/DD/YYYY') %>" class="span2">
     </div>
     <div class="modal-footer">
         <input type="hidden" name="resource" value="<%= resource.name %>">
@@ -85,6 +87,7 @@
 <script src="vendor/underscore-min.js"></script>
 <script src="vendor/backbone-min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/date-utils.min.js"></script>
 <script src="lib/hoard.js"></script>
 <script>
 $(function() {
