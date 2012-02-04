@@ -20,9 +20,9 @@ $(function() {
         parseDateEqual('6/05/1986 01:05', expected);
     });
 
-    test('format_date', function() {
+    test('format_datetime', function() {
         var formatDateEqual = function(actual, expected) {
-            equal(Hoard.util.format_date(actual), expected);
+            equal(Hoard.util.format_datetime(actual), expected);
         };
 
         formatDateEqual(new Date(1986, 0, 19, 13, 45), '1/19/1986 1:45pm');
