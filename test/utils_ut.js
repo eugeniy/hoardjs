@@ -19,4 +19,16 @@ $(function() {
         parseDateEqual('06/05/1986 1:05', expected);
         parseDateEqual('6/05/1986 01:05', expected);
     });
+
+    test('format_date', function() {
+        var formatDateEqual = function(actual, expected) {
+            equal(Hoard.util.format_date(actual), expected);
+        };
+
+        formatDateEqual(new Date(1986, 0, 19, 13, 45), '1/19/1986 1:45pm');
+        formatDateEqual(new Date(1986, 0, 19, 12), '1/19/1986 12:00pm');
+        formatDateEqual(new Date(1986, 0, 19, 12, 1), '1/19/1986 12:01pm');
+        formatDateEqual(new Date(1986, 0, 19), '1/19/1986 0:00am');
+        formatDateEqual(new Date(1986, 0, 19, 0, 1), '1/19/1986 0:01am');
+    });
 });
