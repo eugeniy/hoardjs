@@ -31,4 +31,9 @@ $(function() {
         formatDateEqual(new Date(1986, 0, 19), '1/19/1986 0:00am');
         formatDateEqual(new Date(1986, 0, 19, 0, 1), '1/19/1986 0:01am');
     });
+
+    test('String.format', function() {
+        equal('foo {0} bar{1}'.format('blah', 42), 'foo blah bar42');
+        equal('foo {{0}} bar'.format('blah'), 'foo {blah} bar');
+    });
 });
