@@ -29,7 +29,8 @@ $(function() {
         formatDateEqual(new Date(1986, 0, 19, 12), '1/19/1986 12:00pm');
         formatDateEqual(new Date(1986, 0, 19, 12, 1), '1/19/1986 12:01pm');
         formatDateEqual(new Date(1986, 0, 19), '1/19/1986 0:00am');
-        formatDateEqual(new Date(1986, 0, 19, 0, 1), '1/19/1986 0:01am');
+        formatDateEqual(new Date(1986, 0, 19, 10, 9), '1/19/1986 10:09am');
+        formatDateEqual(new Date(1986, 0, 19, 0, 10), '1/19/1986 0:10am');
     });
 
     test('String.format', function() {
