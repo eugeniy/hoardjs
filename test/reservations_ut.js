@@ -28,26 +28,28 @@ $(function() {
         ok( ! reservation.intersects(1000, 1000));
     });
 
-    /*
     test('validate', function() {
-        Hoard.reservations.add(create_reservation({ start_at: 100, end_at: 200 }));
-        var res = create_reservation();
-
-        var validateDate = function(input) {
-            var valid = create_reservation().toJSON();
-            return res.validate($.extend(valid, input));
+        var dateValid = function(start_at, end_at) {
+            var res = create_reservation();
+            res.attributes.start_at = start_at;
+            res.attributes.end_at = end_at;
+            return res.isValid();
         };
 
-        equal(validateDate({ start_at: 10, end_at: 20 }), undefined);
-        notEqual(validateDate({ start_at: 20, end_at: 10 }), undefined);
-        notEqual(validateDate({ start_at: 10 }), undefined);
-        notEqual(validateDate({ start_at: 150, end_at: 180 }), undefined);
-        notEqual(validateDate({ start_at: 10, end_at: '' }), undefined);
-        notEqual(validateDate({ start_at: '', end_at: 20 }), undefined);
-        notEqual(validateDate({ start_at: '', end_at: 20 }), undefined);
-        notEqual(validateDate({ start_at: '10', end_at: '20' }), undefined);
+        ok(dateValid(10, 20), 'can use numbers for dates');
+        ok(dateValid(new Date(2011), new Date(2012)), 'can use Date object');
+        ok(dateValid(10, new Date(2012)), 'can combine Date and numbers');
+
+        Hoard.reservations.add(create_reservation({ start_at: 100, end_at: 200 }));
+
+        ok(dateValid(10, 20));
+        ok( ! dateValid(20, 10), 'start_at after end_at');
+        ok( ! dateValid(10, undefined), 'end_at unspecified');
+        ok( ! dateValid(150, 180), 'time conflict');
+        ok( ! dateValid(10, ''), 'invalid format');
+        ok( ! dateValid('', 20), 'invalid format');
+        ok( ! dateValid('10', '20'), 'number strings are not parsed');
     });
-    */
 
     test('conflict', function() {
         Hoard.reservations.add(create_reservation({ start_at: 100, end_at: 200 }));
@@ -62,9 +64,15 @@ $(function() {
         Hoard.reservations.add(create_reservation({ start_at: 100, end_at: 200 }));
 
         var res = create_reservation({ start_at: 10, end_at: 20 });
-        equal(res.available(), true);
+        ok(res.available());
 
-        res.set({ start_at: 10, end_at: 210 });
-        equal(res.available(), false);
+        res.set({ start_at: 5, end_at: 210 });
+        // shouldn't be able to set if invalid
+        notEqual(res.get('start_at'), 5);
+        notEqual(res.get('end_at'), 210);
+
+        res.attributes.start_at = 5;
+        res.attributes.end_at = 210;
+        ok( ! res.available(), 'manually set attributes validated');
     });
 });

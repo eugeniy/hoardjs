@@ -1,7 +1,7 @@
 $(function() {
     module('Resource');
 
-    test('validate()', function() {
+    test('validate', function() {
         var res = create_resource();
 
         equal(res.validate({ name: 'Panda Blade' }), undefined);
@@ -9,7 +9,7 @@ $(function() {
         notEqual(res.validate({}), undefined);
     });
 
-    test('unique()', function() {
+    test('unique', function() {
         Hoard.resources.add({ name: 'Trout Blade' });
         var res = create_resource();
 
