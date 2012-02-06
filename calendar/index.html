@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>Hoard | Calendar</title>
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-<script src="vendor/yepnope-min.js"></script>
+<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+<script src="../vendor/yepnope-min.js"></script>
 </head>
 <body>
 
@@ -24,13 +24,13 @@
 
 <script>
 yepnope([{
-    load: ['vendor/jquery-1.7.1.min.js', 'vendor/underscore-min.js',
-           'vendor/backbone-min.js', 'vendor/bootstrap/js/bootstrap.min.js',
-           'lib/hoard.js', 'lib/util.js',
-           /* 'lib/model/resource.js', 'lib/model/reservation.js',
-           'lib/view/resource/show.js', 'lib/view/resource/list.js',
-           'lib/view/reservation/show.js', 'lib/view/reservation/list.js',
-           'lib/view/reservation/form.js', */ 'lib/view/application.js'],
+    load: ['../vendor/jquery-1.7.1.min.js', '../vendor/underscore-min.js',
+           '../vendor/backbone-min.js', '../vendor/bootstrap/js/bootstrap.min.js',
+           '../lib/hoard.js', '../lib/util.js',
+           /* '../lib/model/resource.js', '../lib/model/reservation.js',
+           '../lib/view/resource/show.js', '../lib/view/resource/list.js',
+           '../lib/view/reservation/show.js', '../lib/view/reservation/list.js',
+           '../lib/view/reservation/form.js', */ '../lib/view/application.js'],
     complete: function() {
         var hoard = new Hoard.view.Application;
         $('#hoard').append(hoard.render().el);
