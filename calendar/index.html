@@ -4,15 +4,50 @@
 <title>Hoard | Calendar</title>
 <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
 <script src="../vendor/yepnope-min.js"></script>
+<script>
+        function clickDay(){
+          var $container = $('#container');
+          $container.empty();
+          var day = new CalendarEvents();
+          var dayView = new DayView({collection: day});
+          $container.append(dayView.render().el);
+          day.fetch();
+
+        };
+        function clickWeek(){
+          var $container = $('#container');
+          $container.empty();
+          var week = new CalendarEvents();
+          var weekView = new WeekView({collection: week});
+          $container.append(weekView.render().el);
+          week.fetch();
+        };
+        function clickMonth(){
+          var $container = $('#container');
+          $container.empty();
+          var month = new CalendarEvents();
+          var monthView = new MonthView({collection: month});
+          $container.append(monthView.render().el);
+          month.fetch();
+        };
+        function clickAgenda(){
+          var $container = $('#container');
+          $container.empty();
+          var agenda = new CalendarEvents();
+          var agendaView = new AgendaView({collection: agenda});
+          $container.append(agendaView.render().el);
+          agenda.fetch();
+        };
+</script>
 </head>
 <body>
 
 <div class="btn-group">
-  <button class="btn btn-small day">Day</button>
-  <button class="btn btn-small week">Week</button>
-  <button class="btn btn-small month">Month</button>
+  <button class="btn btn-small day" onClick="clickDay();">Day</button>
+  <button class="btn btn-small week" onClick="clickWeek();">Week</button>
+  <button class="btn btn-small month" onClick="clickMonth();">Month</button>
   <!-- button class="btn btn-small year">Year</button -->
-  <button class="btn btn-small agenda">Agenda</button>
+  <button class="btn btn-small agenda" onClick="clickAgenda();">Agenda</button>
   <!-- button class="btn btn-small custom">Custom</button -->
 </div>
 
@@ -42,13 +77,9 @@
 
 
 <script type="text/template" id="calendar-event-template">
-  <span class ="calendar-title"><%= title %></span>
-  <span class ="calendar-selection"><%= selection %></span>
-  <ol class="data">
-    <% _.each(data, function(data) { %>
-    <li><%= data.title %></li>
-    <%  }); %>
-  </ol>
+  <span class ="calendar-event-start">   <%= start_at %></span>
+  <span class ="calendar-event-end">     <%=   end_at %></span>
+  <span class ="calendar-event-resource"><%= resource %></span>
 </script>
 
 
@@ -61,6 +92,7 @@ yepnope([{
         //var calendar = new Calendar({title:'Week', selection:'Feb 5 - 11, 2012', data: [{title:'Sun 2/5'},{title:'Mon 2/6'},{title:'Tue 2/7'},{title:'Wed 2/8'},{title:'Thu 2/9'},{title:'Fri 2/10'},{title:'Sat 2/11'}] });
         //calendarView = new CalendarView({model:calendar});
         //$('#container').append(calendarView.render().el);
+
 
     }
 }]);

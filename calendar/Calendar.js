@@ -40,16 +40,20 @@
 
         render: function(){
             var $events,
-                collection = this.collection;
+                collection = this.collection,
+                $today = "2012-01-27";
 
             $(this.el).html(this.template({}));
             $events = this.$('.day-events');
             collection.each(function(cEvent){
-                var view = new DayCalendarEventView({
-                    model: cEvent,
-                    collection: collection
-                });
-                $events.append(view.render().el);
+                if(cEvent.attributes["start_at"].indexOf($today) == 0 ){
+                    var view = new DayCalendarEventView({
+                        model: cEvent,
+                        collection: collection
+                    });
+                    $events.append(view.render().el);
+                }
+                
             });
             return this;
         }
@@ -66,21 +70,25 @@
 
         initialize: function(){
             _.bindAll(this, 'render');
-            this.template = _.template($('#week-events-template').html());
+            this.template = _.template($('#week-event-template').html());
             this.collection.bind('reset', this.render);
         },
 
         render: function(){
             var $events,
-                collection = this.collection;
+                collection = this.collection,
+                $week = "2012-01-";
+
             $(this.el).html(this.template({}));
             $events = this.$('.week-events');
             collection.each(function(cEvent){
-                var view = new WeekCalendarEventView({
-                    model: cEvent,
-                    collection: collection
-                });
-                $events.append(view.render().el);
+                if(cEvent.attributes["start_at"].indexOf($week) == 0 ){
+                    var view = new WeekCalendarEventView({
+                        model: cEvent,
+                        collection: collection
+                    });
+                    $events.append(view.render().el);
+                }
             });
             return this;
         }
@@ -97,21 +105,25 @@
 
         initialize: function(){
             _.bindAll(this, 'render');
-            this.template = _.template($('#month-events-template').html());
+            this.template = _.template($('#month-event-template').html());
             this.collection.bind('reset', this.render);
         },
 
         render: function(){
             var $events,
-                collection = this.collection;
+                collection = this.collection,
+                $month = "2012-0";
+
             $(this.el).html(this.template({}));
             $events = this.$('.month-events');
             collection.each(function(cEvent){
-                var view = new MonthCalendarEventView({
-                    model: cEvent,
-                    collection: collection
-                });
-                $events.append(view.render().el);
+                if(cEvent.attributes["start_at"].indexOf($month) == 0 ){
+                    var view = new MonthCalendarEventView({
+                        model: cEvent,
+                        collection: collection
+                    });
+                    $events.append(view.render().el);
+                }
             });
             return this;
         }
@@ -129,21 +141,25 @@
 
         initialize: function(){
             _.bindAll(this, 'render');
-            this.template = _.template($('#agenda-events-template').html());
+            this.template = _.template($('#agenda-event-template').html());
             this.collection.bind('reset', this.render);
         },
 
         render: function(){
             var $events,
-                collection = this.collection;
+                collection = this.collection,
+                $agenda_time = "2012-01-";
+
             $(this.el).html(this.template({}));
             $events = this.$('.agenda-events');
             collection.each(function(cEvent){
-                var view = new AgendaCalendarEventView({
-                    model: cEvent,
-                    collection: collection
-                });
-                $events.append(view.render().el);
+                if(cEvent.attributes["start_at"].indexOf($agenda_time) == 0 ){
+                    var view = new AgendaCalendarEventView({
+                        model: cEvent,
+                        collection: collection
+                    });
+                    $events.append(view.render().el);
+                }
             });
             return this;
         }
