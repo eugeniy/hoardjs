@@ -1,149 +1,154 @@
 (function($){
 
-	window.Calendar = Backbone.Model.extend({});
+    window.Calendar = Backbone.Model.extend({});
 
-	window.CalendarView = Backbone.View.extend({
-	    initialize: function() {
-	    	_.bindAll(this, 'render');
-	    	this.model.bind('change', this.render);
-	        this.template = _.template($('#calendar-template').html());
-	    },
-	    render: function() {
-	        $(this.el).html(this.template(this.model.toJSON()));
-	        return this;
-	    }
-	});
+    window.Calendars = Backbone.Collection.extend({
+        model: Calendar,
+        url: "calendars.json"
+    });
 
-	window.Calendars = Backbone.Collection.extend({
-		model: Calendar,
-		url: 'calendars.json'
-	});
+    window.CalendarView = Backbone.View.extend({
+        initialize: function() {
+            _.bindAll(this, 'render');
+            this.model.bind('change', this.render);
+
+            this.template = _.template($('#calendar-template').html());
+        },
+        render: function() {
+            console.log(this.model);
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        }
+    });
+
+    
     
     //====================== DAY VIEW====================
-	window.DayCalendarView = window.CalendarView.extend({
-		
-	});
+    window.DayCalendarView = CalendarView.extend({
+        
+    });
 
-	window.DayView = Backbone.View.extend({
-		tagName: 'section',
-		className: 'day',
+    window.DayView = Backbone.View.extend({
+        tagName: "section",
+        className: "day",
 
-		initialize: function(){
-			_.bindAll(this, 'render');
-			this.template = _.template($('#day-template').html());
-			this.collection.bind('reset', this.render);
-		},
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.template = _.template($('#day-template').html());
+            this.collection.bind('reset', this.render);
+        },
 
-		render: function(){
-			var $calendars,
-			    collection = this.collection;
-			$(this.el).html(this.template({}));
-			$calendars = this.$('.calendars1');
-			collection.each(function(calendars){
-				var view = new DayCalendarView({
-					model: Calendar,
-					collection: collection
-				});
-				$calendars.append(view.render().el);
-			});
-			return this;
-		}
+        render: function(){
+            var $calendars,
+                collection = this.collection;
 
-	});
-	//====================== WEEK VIEW=======================
-    window.WeekCalendarView = window.DayCalendarView.extend({
-		
-	});
+            $(this.el).html(this.template({}));
+            $calendars = this.$('.calendars1');
+            this.collection.each(function(calendar){
+                var view = new DayCalendarView({
+                    model: calendar,
+                    collection: collection
+                });
+                $calendars.append(view.render().el);
+            });
+            return this;
+        }
 
-	window.WeekView = Backbone.View.extend({
-		tagName: 'section',
-		className: 'week',
+    });
+    //====================== WEEK VIEW=======================
+    window.WeekCalendarView = DayCalendarView.extend({
+        
+    });
 
-		initialize: function(){
-			_.bindAll(this, 'render');
-			this.template = _.template($('#week-template').html());
-			this.collection.bind('reset', this.render);
-		},
+    window.WeekView = Backbone.View.extend({
+        tagName: "section",
+        className: "week",
 
-		render: function(){
-			var $calendars,
-			    collection = this.collection;
-			$(this.el).html(this.template({}));
-			$calendars = this.$('.calendars2');
-			collection.each(function(calendars){
-				var view = new WeekCalendarView({
-					model: Calendar,
-					collection: collection
-				});
-				$calendars.append(view.render().el);
-			});
-			return this;
-		}
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.template = _.template($('#week-template').html());
+            this.collection.bind('reset', this.render);
+        },
 
-	});
+        render: function(){
+            var $calendars,
+                collection = this.collection;
+            $(this.el).html(this.template({}));
+            $calendars = this.$('.calendars2');
+            collection.each(function(calendar){
+                var view = new WeekCalendarView({
+                    model: calendar,
+                    collection: collection
+                });
+                $calendars.append(view.render().el);
+            });
+            return this;
+        }
+
+    });
     //====================== MONTH VIEW =======================
-	window.MonthCalendarView = window.WeekCalendarView.extend({
-		
-	});
+    window.MonthCalendarView = WeekCalendarView.extend({
+        
+    });
 
-	window.MonthView = Backbone.View.extend({
-		tagName: 'section',
-		className: 'month',
+    window.MonthView = Backbone.View.extend({
+        tagName: "section",
+        className: "month",
 
-		initialize: function(){
-			_.bindAll(this, 'render');
-			this.template = _.template($('#month-template').html());
-			this.collection.bind('reset', this.render);
-		},
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.template = _.template($('#month-template').html());
+            this.collection.bind('reset', this.render);
+        },
 
-		render: function(){
-			var $calendars,
-			    collection = this.collection;
-			$(this.el).html(this.template({}));
-			$calendars = this.$('.calendars3');
-			collection.each(function(calendars){
-				var view = new MonthCalendarView({
-					model: Calendar,
-					collection: collection
-				});
-				$calendars.append(view.render().el);
-			});
-			return this;
-		}
+        render: function(){
+            var $calendars,
+                collection = this.collection;
+            $(this.el).html(this.template({}));
+            $calendars = this.$('.calendars3');
+            collection.each(function(calendar){
+                var view = new MonthCalendarView({
+                    model: calendar,
+                    collection: collection
+                });
+                $calendars.append(view.render().el);
+            });
+            return this;
+        }
 
-	});
+    });
     
     //====================== AGENDA VIEW =======================
-	window.AgendaCalendarView = window.WeekCalendarView.extend({
-		
-	});
+    window.AgendaCalendarView = WeekCalendarView.extend({
+        
+    });
 
-	window.AgendaView = Backbone.View.extend({
-		tagName: 'section',
-		className: 'agenda',
+    window.AgendaView = Backbone.View.extend({
+        tagName: "section",
+        className: "agenda",
 
-		initialize: function(){
-			_.bindAll(this, 'render');
-			this.template = _.template($('#agenda-template').html());
-			this.collection.bind('reset', this.render);
-		},
+        initialize: function(){
+            _.bindAll(this, 'render');
+            this.template = _.template($('#agenda-template').html());
+            this.collection.bind('reset', this.render);
+        },
 
-		render: function(){
-			var $calendars,
-			    collection = this.collection;
-			$(this.el).html(this.template({}));
-			$calendars = this.$('.calendars4');
-			collection.each(function(calendars){
-				var view = new AgendaCalendarView({
-					model: Calendar,
-					collection: collection
-				});
-				$calendars.append(view.render().el);
-			});
-			return this;
-		}
+        render: function(){
+            var $calendars,
+                collection = this.collection;
+            $(this.el).html(this.template({}));
+            $calendars = this.$('.calendars4');
+            collection.each(function(calendar){
+                var view = new AgendaCalendarView({
+                    model: calendar,
+                    collection: collection
+                });
+                $calendars.append(view.render().el);
+            });
+            return this;
+        }
 
-	});
+    });
 
 
 })(jQuery);
