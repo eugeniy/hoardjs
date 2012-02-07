@@ -24,6 +24,10 @@
     <div id="resource-form"></div>
 </script>
 
+<script type="text/template" id="error-template">
+    <div class="alert alert-error"><%= error %></div>
+</script>
+
 <script type="text/template" id="resources-template">
 <table class="table table-striped table-bordered table-condensed">
     <thead>
@@ -69,6 +73,7 @@
         <h3><%= resource.name %></h3>
     </div>
     <div class="modal-body">
+        <div class="errors"></div>
         <label>Date range</label>
         <input name="start_at_date" value="<%= Hoard.util.format_date(reservation.get('start_at')) %>" class="span2">
         <input name="start_at_time" value="<%= Hoard.util.format_time(reservation.get('start_at')) %>" class="span1">
