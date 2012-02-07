@@ -1,0 +1,27 @@
+[
+  {
+    "id":1,
+    "title":"Day",
+    "selection": "Sunday, Feb 5, 2012",
+    "data":4
+  },
+  {
+    "id":2,
+    "title":"Week",
+    "selection":"Feb 5 - 11, 2012",
+    "data":4
+  },
+  {
+    "id":3,
+    "title":"Month",
+    "selection": "February 2012",
+    "data":4
+  }
+  ,
+  {
+    "id":4,
+    "title":"Agenda",
+    "selection": "Sunday, Feb 5, 2012",
+    "data":4
+  }
+]
