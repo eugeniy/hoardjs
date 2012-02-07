@@ -56,8 +56,10 @@ $(function() {
         var expected = Hoard.reservations.first();
         var res = create_reservation();
 
-        equal(res.conflict(10, 20), undefined);
-        notDeepEqual(res.conflict(120, 210), expected);
+        // FIXME: Those are passing even with a conflict.
+        equal(res.conflict(10, 20, res.resource), undefined);
+        notDeepEqual(res.conflict(120, 210, res.resource), expected);
+        equal(expected.conflict(120, 210, res.resource), undefined);
     });
 
     test('available', function() {
