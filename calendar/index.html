@@ -7,37 +7,48 @@
 </head>
 <body>
 
+<div class="btn-group">
+  <button class="btn btn-small day">Day</button>
+  <button class="btn btn-small week">Week</button>
+  <button class="btn btn-small month">Month</button>
+  <!-- button class="btn btn-small year">Year</button -->
+  <button class="btn btn-small agenda">Agenda</button>
+  <!-- button class="btn btn-small custom">Custom</button -->
+</div>
 
-<div id="calendar"></div>
+<div id="container"> </div>
+
+
+<script type="text/template" id="day-template">
+  <h1> DAY </h1>
+  <ul class='calendars1'> </ul>
+</script>
+
+<script type="text/template" id="week-template">
+  <h1> WEEK </h1>
+  <ul class='calendars2'> </ul>
+</script>
+
+<script type="text/template" id="month-template">
+  <h1> MONTH </h1>
+  <ul class='calendars3'> </ul>
+</script>
+
+<script type="text/template" id="agenda-template">
+  <h1> AGENDA </h1>
+  <ul class='calendars4'> </ul>
+</script>
+
+
 
 <script type="text/template" id="calendar-template">
-    <div class="container">
-        <div class="content">
-            <div class="row">
-                <div id="selector" class="span12">
-                    <div class="btn-group">
-                        <button class="btn btn-small day">Day</button>
-                        <button class="btn btn-small week">Week</button>
-                        <button class="btn btn-small month">Month</button>
-                        <!-- button class="btn btn-small year">Year</button -->
-                        <button class="btn btn-small agenda">Agenda</button>
-                        <!-- button class="btn btn-small custom">Custom</button -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div id="calendar" class="span12">
-                    <span class ="calendar-title"><%= title %></span>
-                    <span class ="calendar-selection"><%= selection %></span>
-                    <ol class="days">
-                        <% _.each(days, function(day) { %>
-                          <li><%= day.title %></li>
-                        <%  }); %>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
+  <span class ="calendar-title"><%= title %></span>
+  <span class ="calendar-selection"><%= selection %></span>
+  <ol class="data">
+    <% _.each(data, function(data) { %>
+    <li><%= data.title %></li>
+    <%  }); %>
+  </ol>
 </script>
 
 
@@ -47,9 +58,9 @@ yepnope([{
            '../vendor/backbone-min.js', '../vendor/bootstrap/js/bootstrap.min.js',
            'Calendar.js'],
     complete: function() {
-        var calendar = new Calendar({title:'Week', selection:'Feb 5 - 11, 2012', days: [{title:'Sun 2/5'},{title:'Mon 2/6'},{title:'Tue 2/7'},{title:'Wed 2/8'},{title:'Thu 2/9'},{title:'Fri 2/10'},{title:'Sat 2/11'}] });
-        calendarView = new CalendarView({model:calendar});
-        $('#calendar').append(calendarView.render().el);
+        //var calendar = new Calendar({title:'Week', selection:'Feb 5 - 11, 2012', data: [{title:'Sun 2/5'},{title:'Mon 2/6'},{title:'Tue 2/7'},{title:'Wed 2/8'},{title:'Thu 2/9'},{title:'Fri 2/10'},{title:'Sat 2/11'}] });
+        //calendarView = new CalendarView({model:calendar});
+        //$('#container').append(calendarView.render().el);
 
     }
 }]);
