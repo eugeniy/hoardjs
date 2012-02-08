@@ -8,7 +8,8 @@ The authentication process is based on the
 specification draft.
 
 The API supports a user-agent-based application authentication using an implicit
-grant (4.2) suitable for javascript applications.
+grant(`4.2 <http://tools.ietf.org/html/draft-ietf-oauth-v2-23#section-4.2>`_),
+suitable for applications implemented in a browser.
 
 Flow
 ~~~~
@@ -25,7 +26,7 @@ registered with the provided client id.
    http://MY_URL#access_token=493ab73b26bb4b1d&token_type=bearer&expires_in=3600
 
 Access token is passed in the fragment and is not visible to the server, use it
-to make subsequent request to the API.
+to make subsequent requests to the API.
 
 Request Examples
 ~~~~~~~~~~~~~~~~
